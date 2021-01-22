@@ -1,0 +1,5 @@
+obj/project.assets.json
+obj/project.nuget.cache
+obj/TodoApi.csproj.nuget.dgspec.json
+obj/TodoApi.csproj.nuget.g.props
+obj/TodoApi.csproj.nuget.g.targets
