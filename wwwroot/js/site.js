@@ -1,4 +1,4 @@
-const uri = 'api/TodoItems';
+const uri = 'api/todo-items';
 let todos = [];
 
 function getItems() {
@@ -17,13 +17,13 @@ function addItem() {
   };
 
   fetch(uri, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(item)
-  })
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
     .then(response => response.json())
     .then(() => {
       getItems();
@@ -34,15 +34,15 @@ function addItem() {
 
 function deleteItem(id) {
   fetch(`${uri}/${id}`, {
-    method: 'DELETE'
-  })
-  .then(() => getItems())
-  .catch(error => console.error('Unable to delete item.', error));
+      method: 'DELETE'
+    })
+    .then(() => getItems())
+    .catch(error => console.error('Unable to delete item.', error));
 }
 
 function displayEditForm(id) {
   const item = todos.find(item => item.id === id);
-  
+
   document.getElementById('edit-name').value = item.name;
   document.getElementById('edit-id').value = item.id;
   document.getElementById('edit-isComplete').checked = item.isComplete;
@@ -58,15 +58,15 @@ function updateItem() {
   };
 
   fetch(`${uri}/${itemId}`, {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(item)
-  })
-  .then(() => getItems())
-  .catch(error => console.error('Unable to update item.', error));
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+    .then(() => getItems())
+    .catch(error => console.error('Unable to update item.', error));
 
   closeInput();
 
@@ -106,7 +106,7 @@ function _displayItems(data) {
     deleteButton.setAttribute('onclick', `deleteItem(${item.id})`);
 
     let tr = tBody.insertRow();
-    
+
     let td1 = tr.insertCell(0);
     td1.appendChild(isCompleteCheckbox);
 
